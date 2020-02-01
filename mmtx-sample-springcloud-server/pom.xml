@@ -1,0 +1,115 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0http://maven.apache.org/xsd/maven-4.0.0.xsd">  
+   
+    <modelVersion>4.0.0</modelVersion>
+    
+	<parent>
+	    <artifactId>mmtx-sample-springcloud</artifactId>
+		<groupId>org.mmtx.sample</groupId>  
+		<version>1.0.0-SNAPSHOT</version> 
+	    <relativePath>../pom.xml</relativePath> 
+	</parent>
+	
+    <artifactId>mmtx-sample-springcloud-server</artifactId>
+    <packaging>jar</packaging>
+    <name>mmtx-sample-springcloud-server</name>
+
+	
+	
+	
+	 <dependencies>
+       <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-consul-discovery</artifactId>
+        </dependency>
+
+
+  		 <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+             <exclusions>
+            	<exclusion>
+            		 <groupId>mysql</groupId>
+          			 <artifactId>mysql-connector-java</artifactId>
+            	</exclusion>
+            </exclusions>
+        </dependency>
+  		 <dependency>
+            <groupId>tk.mybatis</groupId>
+            <artifactId>mapper-spring-boot-starter</artifactId>
+            <version>1.1.2</version>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.9</version>
+        </dependency>
+          <!-- druid -->
+        <dependency>
+            <groupId>com.github.drtrang</groupId>
+            <artifactId>druid-spring-boot2-starter</artifactId>
+            <version>1.1.10</version>
+        </dependency>
+        
+
+		<dependency>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+            <version>1.23</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>6.2</version>
+            <type>jar</type>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.yaml</groupId>
+                    <artifactId>snakeyaml</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+
+	<!-- mmtx -->
+	<dependency>
+		<groupId>io.mmtx</groupId>
+		<artifactId>mmtx-all</artifactId>
+		<version>1.0.0</version>
+	<!-- 	<scope>system</scope>
+		<systemPath>C:/Users/pc0062/Desktop/mmtx-sample-springcloud/mmtx/mmtx-all-1.0.0.jar
+		</systemPath> -->
+	</dependency>
+	<dependency>
+		<groupId>io.mmtx</groupId>
+		<artifactId>spring-cloud-ggw-mmtx</artifactId>
+		<version>1.0.0</version>
+	</dependency>
+    </dependencies>
+<dependencyManagement>
+   <dependencies>
+      <dependency>
+         <groupId>org.springframework.cloud</groupId>
+         <artifactId>spring-cloud-dependencies</artifactId>
+         <version>Finchley.SR2</version>
+         <type>pom</type>
+         <scope>import</scope>
+      </dependency>
+   </dependencies>
+</dependencyManagement>
+
+
+</project>

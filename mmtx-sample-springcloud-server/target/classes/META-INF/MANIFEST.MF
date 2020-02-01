@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Implementation-Title: mmtx-sample-springcloud-server
+Implementation-Version: 1.0.0-SNAPSHOT
+Built-By: pc0062
+Implementation-Vendor-Id: org.mmtx.sample
+Build-Jdk: 1.8.0_131
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/mmtx-sample-springcloud/mmtx-sample-springcloud-ser
+ ver
+Created-By: Maven Integration for Eclipse
+
