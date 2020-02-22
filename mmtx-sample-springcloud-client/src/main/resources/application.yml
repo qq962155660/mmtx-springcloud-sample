@@ -1,6 +1,10 @@
 spring:
     application:
         name: demo-client
+    cloud:
+      alibaba:
+        mmtx:
+          tx-service-group: demo-client-group  
     jackson:
         date-format: yyyy-MM-dd HH:mm:ss
         time-zone: GMT+8
@@ -76,12 +80,11 @@ consul:
         healthCheckInterval: 5s
         instanceId: instance-demo-client
 
-#mmtx config
-mmtx:
-  tx-service-group: group-demo-client
-  
+
+
 logging:
   level:
-    io.mmtx: debug  
+    io.mmtx: error  
+
 
 

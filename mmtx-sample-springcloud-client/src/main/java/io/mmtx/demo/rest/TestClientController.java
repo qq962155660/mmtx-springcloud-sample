@@ -12,8 +12,14 @@ public class TestClientController {
 	@Autowired
 	private TestClientService testClientService;
 	
+	@GetMapping(value = "/tx/save")
+    public Boolean tx() {
+		 return testClientService.tx();
+    }
+	
+	
 	@GetMapping(value = "/tx/save/exe")
-    public Boolean debit() {
+    public Boolean txExe() {
 		 return testClientService.txExe();
     }
 	

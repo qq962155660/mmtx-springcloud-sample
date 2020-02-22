@@ -17,11 +17,19 @@ public class TestClientService {
 	private TestClientMapper localMapper;
 
 	@Transactional
+	public Boolean tx() {
+		remoteClient.insertRow();
+		localMapper.inserTxClient("data-"+System.currentTimeMillis(),"1");
+		return true;
+	}
+	
+	@Transactional
 	public Boolean txExe() {
 		remoteClient.insertRow();
 		localMapper.inserTxClient("data-"+System.currentTimeMillis(),"1");
 		throw new RuntimeException("mmtx exeption");
 	}
+	
 	
 	@LcnTransactional
 	public Boolean txMM() {
@@ -29,7 +37,7 @@ public class TestClientService {
 		localMapper.inserTxClient("data-"+System.currentTimeMillis(),"1");
 		return true;
 	}
-
+	
 	@LcnTransactional
 	public Boolean txMMExe() {
 		remoteClient.insertRow();

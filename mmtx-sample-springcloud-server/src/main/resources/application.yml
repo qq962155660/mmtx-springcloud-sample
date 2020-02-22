@@ -1,6 +1,10 @@
 spring:
     application:
         name: demo-server
+    cloud:
+      alibaba:
+        mmtx:
+          tx-service-group: demo-server-group  
     jackson:
         date-format: yyyy-MM-dd HH:mm:ss
         time-zone: GMT+8
@@ -31,7 +35,6 @@ spring:
       http:
         legacy:
           enabled: true
-
 mybatis:
     basepackage: io.mmtx.demo.mapper
     xmlLocation: classpath:mapper/**/*.xml
@@ -76,9 +79,9 @@ consul:
         healthCheckInterval: 5s
         instanceId: instance-demo-server
 
-#mmtx config
-mmtx:
-  tx-service-group: group-demo-server
+
 logging:
   level:
-    io.mmtx: debug  
+    io.mmtx: error  
+
+

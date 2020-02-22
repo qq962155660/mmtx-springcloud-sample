@@ -89,15 +89,14 @@
 		<groupId>io.mmtx</groupId>
 		<artifactId>mmtx-all</artifactId>
 		<version>1.0.0</version>
-	<!-- 	<scope>system</scope>
-		<systemPath>C:/Users/pc0062/Desktop/mmtx-sample-springcloud/mmtx/mmtx-all-1.0.0.jar
-		</systemPath> -->
 	</dependency>
 	<dependency>
 		<groupId>io.mmtx</groupId>
 		<artifactId>spring-cloud-ggw-mmtx</artifactId>
 		<version>1.0.0</version>
-	</dependency>
+	</dependency> 
+	 
+
     </dependencies>
 <dependencyManagement>
    <dependencies>

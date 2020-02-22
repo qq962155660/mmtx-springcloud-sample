@@ -1,1 +1,5 @@
-io\mmtx\demo\App.class
+io\mmtx\demo\rest\TestClientController.class
+io\mmtx\demo\AppClient.class
+io\mmtx\demo\mapper\TestClientMapper.class
+io\mmtx\demo\service\TestClientService.class
+io\mmtx\demo\feign\TestServerFeignClient.class

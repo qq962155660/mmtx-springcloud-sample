@@ -1,0 +1,4 @@
+io\mmtx\demo\rest\TestServerController.class
+io\mmtx\demo\service\TestServerService.class
+io\mmtx\demo\mapper\TestServerMapper.class
+io\mmtx\demo\AppServer.class

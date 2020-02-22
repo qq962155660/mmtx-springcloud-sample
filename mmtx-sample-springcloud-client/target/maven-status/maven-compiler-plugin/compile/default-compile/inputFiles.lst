@@ -1,1 +1,5 @@
-C:\Users\pc0062\Desktop\mmtx-sample-springcloud\mmtx-sample-springcloud-client\src\main\java\io\mmtx\demo\App.java
+C:\Users\pc0062\Desktop\mmtx-sample-springcloud\mmtx-sample-springcloud-client\src\main\java\io\mmtx\demo\service\TestClientService.java
+C:\Users\pc0062\Desktop\mmtx-sample-springcloud\mmtx-sample-springcloud-client\src\main\java\io\mmtx\demo\feign\TestServerFeignClient.java
+C:\Users\pc0062\Desktop\mmtx-sample-springcloud\mmtx-sample-springcloud-client\src\main\java\io\mmtx\demo\AppClient.java
+C:\Users\pc0062\Desktop\mmtx-sample-springcloud\mmtx-sample-springcloud-client\src\main\java\io\mmtx\demo\rest\TestClientController.java
+C:\Users\pc0062\Desktop\mmtx-sample-springcloud\mmtx-sample-springcloud-client\src\main\java\io\mmtx\demo\mapper\TestClientMapper.java
