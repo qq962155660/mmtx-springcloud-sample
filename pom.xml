@@ -20,6 +20,7 @@
 <modules>
    <module>mmtx-sample-springcloud-client</module>
    <module>mmtx-sample-springcloud-server</module>
+   <module>mmtx-sample-springboot</module>
 </modules>
 
 

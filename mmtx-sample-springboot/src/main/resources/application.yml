@@ -1,0 +1,14 @@
+spring:
+    application:
+        name: sample-boot
+    jackson:
+        date-format: yyyy-MM-dd HH:mm:ss
+        time-zone: GMT+8
+        default-property-inclusion: non_null
+server:
+    port: 8003 #启动端口
+logging:
+  level:
+    io.mmtx: error  
+    
+
