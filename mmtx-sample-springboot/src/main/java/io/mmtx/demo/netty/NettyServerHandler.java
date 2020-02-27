@@ -7,13 +7,17 @@ import io.netty.channel.SimpleChannelInboundHandler;
 
 public class NettyServerHandler extends SimpleChannelInboundHandler<String> {
 	
-		private final String REC_ACK = "ack";
+		private final String REC_ACK = "ack recive msg";
 		
 		@Override
 	    protected void channelRead0(ChannelHandlerContext ctx, String data) throws Exception {
 	        try {
-//	            System.out.println("receive data: " + data);
-//	            ctx.writeAndFlush(REC_ACK);
+	        	//不打印心跳日志
+	        	if(!data.equals("0")){
+	        		System.out.println("receive data: " + data);
+	  	            ctx.writeAndFlush(REC_ACK);
+	        	}
+	          
 	        } catch (Exception e) {
 	            e.printStackTrace();
 	        }

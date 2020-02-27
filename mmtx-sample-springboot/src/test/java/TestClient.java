@@ -30,6 +30,13 @@ public class TestClient {
 	 public static void main(String[] args) {
 	        TestClient tcpClient = new TestClient("47.97.103.128", 18003);
 	        tcpClient.connect();
+	        try {
+				Thread.sleep(1000*10);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	        TestClient.channel.writeAndFlush("i com come in");
 	    }
 	 
 	private String host;
@@ -37,7 +44,7 @@ public class TestClient {
     private Bootstrap bootstrap;
     private RetryPolicy retryPolicy;
     /** 将<code>Channel</code>保存起来, 可用于在其他非handler的地方发送数据 */
-    private Channel channel;
+    public static  Channel channel;
 
     public TestClient(String host, int port) {
         this(host, port, new RetryPolicy(1000, Integer.MAX_VALUE, 60 * 1000));
