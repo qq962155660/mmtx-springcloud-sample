@@ -15,4 +15,7 @@ public class ChannelMap {
 	public static Map<String,Channel> getAllChannel(){
 		return channels;
 	}
+	public static void remove(String key){
+		channels.remove(key);
+	}
 }

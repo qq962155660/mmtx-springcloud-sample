@@ -21,8 +21,11 @@ public class TestServerController {
 		Map<String,Channel> cs = ChannelMap.getAllChannel();
 		for (String key : cs.keySet()) {
 			Channel channel = cs.get(key);
-			channel.writeAndFlush(msg);
-			System.out.println("push id:"+key);
+			if(channel.isActive()){
+				channel.writeAndFlush(msg);
+				System.out.println("push id:"+key);
+			}
+			
 		}
 		return true;
 	}

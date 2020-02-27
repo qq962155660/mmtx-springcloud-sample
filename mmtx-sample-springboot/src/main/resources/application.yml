@@ -11,4 +11,6 @@ logging:
   level:
     io.mmtx: error  
     
-
+#netty-inet-address: 127.0.0.1
+netty-inet-address: 172.16.17.210
+netty-port: 18003
