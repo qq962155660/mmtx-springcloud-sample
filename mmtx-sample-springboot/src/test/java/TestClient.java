@@ -4,11 +4,11 @@ import java.util.concurrent.TimeUnit;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.channel.ChannelInitializer;
-import io.netty.channel.ChannelOption;
 import io.netty.channel.EventLoop;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.SimpleChannelInboundHandler;
@@ -28,15 +28,9 @@ import io.netty.util.concurrent.ScheduledFuture;
 public class TestClient {
 	
 	 public static void main(String[] args) {
-	        TestClient tcpClient = new TestClient("47.97.103.128", 18003);
+	        TestClient tcpClient = new TestClient("127.0.0.1", 18003);
 	        tcpClient.connect();
-	        try {
-				Thread.sleep(1000*10);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-	        TestClient.channel.writeAndFlush("i com come in");
+	      
 	    }
 	 
 	private String host;
@@ -53,6 +47,7 @@ public class TestClient {
     public TestClient(String host, int port, RetryPolicy retryPolicy) {
         this.host = host;
         this.port = port;
+        this.retryPolicy = retryPolicy;
         EventLoopGroup group = new NioEventLoopGroup();
         // bootstrap 可重用, 只需在TcpClient实例化的时候初始化即可.
         bootstrap = new Bootstrap();
@@ -67,7 +62,8 @@ public class TestClient {
     public void connect() {
         synchronized (bootstrap) {
             ChannelFuture future = bootstrap.connect(host, port);
-            this.channel = future.channel();
+            future.addListener(getConnectionListener());
+            channel = future.channel();
         }
     }
     
@@ -75,7 +71,16 @@ public class TestClient {
         return retryPolicy;
     }
 
- 
+    private ChannelFutureListener getConnectionListener() {
+        return new ChannelFutureListener() {
+            @Override
+            public void operationComplete(ChannelFuture future) throws Exception {
+                if (!future.isSuccess()) {
+                    future.channel().pipeline().fireChannelInactive();
+                }
+            }
+        };
+    }
 
    
 }
@@ -179,6 +184,7 @@ class ClientInitializer extends ChannelInitializer<SocketChannel> {
 
 	@Override
 	protected void initChannel(SocketChannel socketChannel) throws Exception {
+		socketChannel.pipeline().addLast(this.reconnectHandler);
 		socketChannel.pipeline().addLast(new LengthFieldBasedFrameDecoder(Integer.MAX_VALUE, 0, 4, 0, 4));
 		socketChannel.pipeline().addLast(new LengthFieldPrepender(4));
 		socketChannel.pipeline().addLast("decoder", new StringDecoder());
@@ -216,8 +222,9 @@ class ReconnectHandler extends ChannelInboundHandlerAdapter {
 		boolean allowRetry = getRetryPolicy().allowRetry(retries);
 		if (allowRetry) {
 
-			long sleepTimeMs = getRetryPolicy().getSleepTimeMs(retries);
-
+			//long sleepTimeMs = getRetryPolicy().getSleepTimeMs(retries);
+			long sleepTimeMs = 1000*10;
+			
 			System.out.println(String.format("Try to reconnect to the server after %dms. Retry count: %d.", sleepTimeMs,
 					++retries));
 

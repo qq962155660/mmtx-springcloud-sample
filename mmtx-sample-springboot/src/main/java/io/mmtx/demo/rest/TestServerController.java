@@ -16,7 +16,7 @@ public class TestServerController {
 	@Autowired
 	private TestServerService testServerService;
 
-	@GetMapping("/push/all/{msg}")
+	@GetMapping("/server/push/all/{msg}")
 	public Boolean insertRow(@PathVariable("msg")String msg){
 		Map<String,Channel> cs = ChannelMap.getAllChannel();
 		for (String key : cs.keySet()) {
@@ -24,6 +24,20 @@ public class TestServerController {
 			if(channel.isActive()){
 				channel.writeAndFlush(msg);
 				System.out.println("push id:"+key);
+			}
+			
+		}
+		return true;
+	}
+	
+	@GetMapping("/server/remove/all")
+	public Boolean remove(){
+		Map<String,Channel> cs = ChannelMap.getAllChannel();
+		for (String key : cs.keySet()) {
+			Channel channel = cs.get(key);
+			if(channel.isActive()){
+				channel.close();
+				cs.remove(key);
 			}
 			
 		}
