@@ -8,8 +8,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import io.mmtx.demo.netty.NettyServer;
+import io.mmtx.demo.netty.Server;
 
 
 @SpringBootApplication
@@ -29,9 +28,9 @@ public class AppServer {
 	}
 	public static void main(String[] args) {
         SpringApplication.run(AppServer.class, args);
-        NettyServer nettyServer = new NettyServer();
+        Server nettyServer = new Server();
 //        nettyServer.start(new InetSocketAddress("172.16.17.210", 18003));
-        nettyServer.start(new InetSocketAddress(nettyServerHost, 18003));
+        nettyServer.start(new InetSocketAddress(nettyServerHost, nettyServerPort));
     }
         
 }
